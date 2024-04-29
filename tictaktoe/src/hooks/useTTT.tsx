@@ -32,6 +32,7 @@ export const useTTT = () => {
   };
 
   const handleClick = (index: number) => {
+    
     const winner = calculateWinner(board);
     if (winner || board[index]) return;
     const newBoard = [...board];
