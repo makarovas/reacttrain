@@ -20,8 +20,6 @@ export const useTTT = () => {
   const calculatedWinner = useMemo(() => {
     for (let i = 0; i < WINNING_PATTERNS.length; i++) {
       const [a, b, c] = WINNING_PATTERNS[i];
-      console.log(WINNING_PATTERNS[i], 'WINNING_PATTERNS[i];');
-      console.log(board[a], board[b], board[c]);
       if (
         (board[a] === 'X' || board[a] === 'O') &&
         board[a] === board[b] &&
@@ -38,7 +36,7 @@ export const useTTT = () => {
     const newBoard = [...board];
     newBoard[index] = isXNext ? 'X' : 'O';
     setBoard(newBoard);
-    setIsXNext(!isXNext);
+    setIsXNext((prev) => !prev);
   };
 
   const getStatusMessage = () => {
