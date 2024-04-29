@@ -42,14 +42,13 @@ export const useTTT = (size: number) => {
 
   const handleClick = useCallback(
     (row: number, col: number) => {
-      const index = row * size + col;
       if (calculatedWinner || board[row][col]) return;
       const newBoard = board.map((r) => [...r]);
       newBoard[row][col] = isXNext ? 'X' : 'O';
       setBoard(newBoard);
       setIsXNext((prev) => !prev);
     },
-    [board, calculatedWinner, isXNext, size]
+    [board, calculatedWinner, isXNext]
   );
 
   const status = useMemo(() => {
