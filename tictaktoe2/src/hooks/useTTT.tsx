@@ -1,12 +1,11 @@
-// hooks/useTTT.js
 import { useCallback, useMemo, useState } from 'react';
-
+const initBoard = [
+  ['', '', ''],
+  ['', '', ''],
+  ['', '', ''],
+];
 export const useTTT = () => {
-  const [board, setBoard] = useState([
-    ['', '', ''],
-    ['', '', ''],
-    ['', '', ''],
-  ]);
+  const [board, setBoard] = useState(initBoard);
   const [isXNext, setIsXNext] = useState(true);
 
   const calculateWinner = useCallback(() => {
@@ -25,7 +24,7 @@ export const useTTT = () => {
     ];
 
     for (const line of lines) {
-      if (line[0] && line.every((cell) => cell === line[0])) {
+      if (line[0] && line[0] !== '' && line.every((cell) => cell === line[0])) {
         return line[0];
       }
     }
@@ -53,11 +52,7 @@ export const useTTT = () => {
   );
 
   const resetGame = useCallback(() => {
-    setBoard([
-      ['', '', ''],
-      ['', '', ''],
-      ['', '', ''],
-    ]);
+    setBoard(initBoard);
     setIsXNext(true);
   }, []);
 
