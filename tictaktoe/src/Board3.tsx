@@ -1,23 +1,22 @@
-import './Board.css';
-import { useTTT } from './hooks/useTTT';
+import './Board3.css';
+import { useTTT } from './hooks/useTTT2';
 
 export const Board = () => {
-  const { board, resetGame, handleClick, getStatusMessage } = useTTT();
+  const { board, getStatus, resetGame, handleClick } = useTTT();
   return (
     <div className='game'>
-      <h1 className='status'>{getStatusMessage()} </h1>
+      <h1 className='status'>{getStatus()}</h1>
       <button className='reset' onClick={resetGame}>
-        Reset Game
+        Reset game
       </button>
       <div className='board'>
         {board.map((b, i) => {
-          console.log(b, !!b);
           return (
             <button
-              className='cell'
               key={i}
-              onClick={() => handleClick(i)}
               disabled={!!b}
+              onClick={() => handleClick(i)}
+              className='cell'
             >
               {b}
             </button>

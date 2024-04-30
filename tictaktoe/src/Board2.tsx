@@ -7,10 +7,16 @@ export const Board = () => {
   return (
     <div className='game'>
       <h1 className='status'>{getStatusMessage()}</h1>
-      <button onClick={resetGame}>reset</button>
+      <button onClick={resetGame} className='reset'>
+        reset
+      </button>
       <div className='board'>
         {board.map((b, i) => (
-          <button key={`${i}-${b[i]}`} onClick={() => handleClick(i)}>
+          <button
+            className='cell'
+            key={`${i}-${b[i]}`}
+            onClick={() => handleClick(i)}
+          >
             {b}
           </button>
         ))}
